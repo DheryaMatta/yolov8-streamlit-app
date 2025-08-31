@@ -42,7 +42,7 @@ with st.sidebar.expander("About this project"):
 # Image uploader and sample selector
 uploaded_file = st.file_uploader("Upload an image (.jpg, .png)", type=["jpg", "png"])
 
-sample_dir = "samples"
+sample_dir = "sample"
 sample_images = []
 if os.path.exists(sample_dir):
     sample_images = [f for f in os.listdir(sample_dir) if f.lower().endswith((".jpg", ".png"))]
@@ -56,7 +56,7 @@ elif selected_sample:
     image = Image.open(os.path.join(sample_dir, selected_sample)).convert("RGB")
 
 if image is not None:
-    st.image(image, caption="Input Image", use_column_width=True)
+    st.image(image, caption="Input Image", use_container_width=True)
 
 if st.button("Run Detection"):
     if image is None:
