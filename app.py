@@ -32,8 +32,7 @@ with st.sidebar.expander("About this project"):
 # Load YOLO model safely (PyTorch >=2.6)
 @st.cache_resource
 def load_model():
-    with torch.serialization.safe_globals([DetectionModel]):
-        model = YOLO("best.pt")
+    model = YOLO("best.pt")
     return model
 
 model = load_model()
