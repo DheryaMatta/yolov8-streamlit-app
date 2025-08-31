@@ -1,5 +1,7 @@
 import streamlit as st
 from ultralytics import YOLO
+from ultralytics.nn.tasks import DetectionModel
+import torch
 import cv2
 import numpy as np
 import pandas as pd
@@ -11,9 +13,13 @@ st.set_page_config(page_title="YOLOv8 Object Detection", layout="centered")
 # Load model once
 @st.cache_resource
 def load_model():
-    model = YOLO("best.pt")
+    """
+    Safely loads YOLOv8 model in PyTorch >=2.6.
+    Uses safe_globals context to allow DetectionModel.
+    """
+    with torch.serialization.safe_globals([DetectionModel]):
+        model = YOLO("best.pt")
     return model
-
 model = load_model()
 
 st.title("YOLOv8 Object Detection Web App")
