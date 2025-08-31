@@ -1,6 +1,6 @@
 import streamlit as st
 from ultralytics import YOLO
-from ultralytics.nn.tasks import Sequential
+from torch.nn import Sequential
 import torch
 import cv2
 import numpy as np
