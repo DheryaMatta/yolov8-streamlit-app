@@ -20,14 +20,9 @@ st.markdown(
 # Load YOLOv8 model with safe globals context (fixes PyTorch 2.6+ unpickling error)
 @st.cache_resource
 def load_model():
-    try:
-        from ultralytics.nn.tasks import DetectionModel
-        with torch.serialization.add_safe_globals([DetectionModel]):
-            model = YOLO("best.pt")
-        return model
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        return None
+    model = YOLO("best.pt")
+    return model
+
 
 model = load_model()
 if model is None:
