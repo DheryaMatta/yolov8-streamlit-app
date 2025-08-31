@@ -1,5 +1,5 @@
-streamlit
-ultralytics
-opencv-python-headless
+streamlit==1.37.0
+ultralytics==8.2.50
+opencv-python-headless==4.9.0.80
 pillow
 pandas
