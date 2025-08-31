@@ -90,7 +90,7 @@ if st.button("Run Detection"):
                 cv2.putText(img_out, text, (xyxy[0], xyxy[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 0), 1)
 
         img_out_rgb = cv2.cvtColor(img_out, cv2.COLOR_BGR2RGB)
-        st.image(img_out_rgb, caption="Detection Result", use_column_width=True)
+        st.image(img_out_rgb, caption="Detection Result", use_container_width=True)
 
         # Prepare detections table
         detections = []
